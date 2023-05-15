@@ -1,0 +1,69 @@
+/* =Header
+========================================================================================*/
+.header {
+    position: relative;
+    z-index: 1;
+    width:100%;
+    .logo {
+        margin: 0;
+        line-height: 1;
+        display: inline-block;
+        max-width: 40%;
+        strong {
+            font-size: 0;
+            height: 0;
+            left: -999em;
+            line-height: 0;
+            overflow: hidden;
+            position: absolute;
+            text-indent: -999em;
+            top: -999em;
+            width: 0;
+        }
+        a {
+            display: inline-block;
+            position: relative;
+
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+    }
+
+    /* For Sticky Header*/
+    &.clone-full,&.clone-wrap {
+        /* Required styles */
+        position: fixed;
+        z-index: $z-index-overlay; // Should be the same to fix issue on FireFox
+        top: 0;
+        left: 0;
+
+        /* Custom styles */
+        @extend %transition-all;
+        transform: translateY(-100%);
+        .logo {
+            max-width: rem(150);
+            // margin-top: map-get($spacers, 1) !important;
+            // margin-bottom: map-get($spacers, 1) !important;
+            img {
+                vertical-align: middle;
+            }
+        }
+    }
+    &.clone-wrap  {
+        background: none!important;
+        .wrap {
+            background: $color3;
+        }
+    }
+    /* Custom styles for Sticky Header */
+    &.sticky {
+        //@extend %shadow-bottom;
+        //padding:  map-get($spacers, 2) map-get($spacers, 3)!important;
+        transform: translateY(0);
+    }
+
+    @include media-breakpoint-down(md) {
+    }
+}

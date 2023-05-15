@@ -1,0 +1,87 @@
+/* =tab
+========================================================================================*/
+.tab-box {
+    padding:rem(35) 0;
+}
+.tabcontent {
+    display: none;
+    color:$color2;
+    padding:map-get( $spacers,2 );
+    background:$color4;
+
+    .tab-block.block-p & {
+        background-color: $color-white;
+    }
+}
+
+.tabnav {
+    width:100%;
+    margin:0;
+    padding:0;
+    list-style:none;
+    & li {
+        float:left;
+        position:relative;
+        margin:0;
+        text-align:center;
+        & a {
+            display:block;
+            padding: map-get( $spacers, 2 ) map-get( $spacers, 3 );
+            text-decoration:none;
+            color:$color-white;
+            background:$color1;
+            cursor: pointer;
+            /*margin-bottom:-1px;
+            border-left:solid 1px $color3; */
+            &:hover {
+                background:$color2;
+                color:$color1;
+            }
+        }
+        &.active {
+            & a {
+                background:$color2;
+                color:$color1;
+            }
+        }
+        // &:first-child a {
+        //     border-left:0;
+        // }
+    }
+}
+.tab-container {
+    /*border:solid 1px $color3; */
+    border-top:0;
+}
+
+.jq-tabs {
+    & .tabcontent {
+        display:none;
+    }
+}
+
+.tab-data.full-width .tabnav {
+    display: flex;
+    flex-wrap: wrap;
+    li {
+        @extend %center-vh;
+        float: none;
+        flex: 1 1 0;
+    }
+}
+
+@include media-breakpoint-down(md) {
+    .tabnav {
+        display:none !important;
+    }
+    .tab-data {
+        // margin:0 0 rem(30);
+        & .tabnav {
+            display:none;
+        }
+    }
+    // .tab-container {
+    //     border:none;
+    // }
+}
+

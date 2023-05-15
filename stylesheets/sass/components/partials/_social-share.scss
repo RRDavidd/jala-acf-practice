@@ -1,0 +1,57 @@
+/* =Social Share
+========================================================================================*/
+
+// Local Mixins
+@mixin lm-btn-no-text {
+    font-size: 0;
+    text-indent: -999em;
+    overflow: hidden;
+    padding-right: 0;
+    padding-left: rem(56); // Less 4 "pixels" from Span width due to border;
+    span {
+        border:none;
+        position: initial;
+        top: 0;
+        left: 0;
+    }
+}
+// End of Local Mixins
+
+.social-share-buttons {
+    a {
+        position: relative;
+        display: inline-block;
+        margin-right: map-get( $spacers, 1 );
+        color: $color-white;
+        padding-left: $input-btn-padding-x + rem(40);
+        @extend %transition-all-children;
+        span {
+            position: absolute;
+            top: 0;
+            left: rem(-1);  // For btn border (2 "pixels");  left: 0;
+            width: rem(60);
+            height: 100%;
+            border-right: solid $border-width $color-white;
+            svg {
+                width: rem(30);
+                height: rem(30);
+                @extend %vh-center;
+            }
+        }
+        @include media-breakpoint-down(md) {
+            @include lm-btn-no-text;
+        }
+        &:hover {
+            span {
+                border-color: $color1;
+                svg * {
+                    fill: $color1;
+                }
+            }
+        }
+    }
+
+    &.btn-no-text a {
+        @include lm_btn-no-text;
+    }
+}

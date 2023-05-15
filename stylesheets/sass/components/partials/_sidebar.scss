@@ -1,0 +1,36 @@
+/* =Sidebar
+========================================================================================*/
+aside { // #sidebar
+}
+
+.widget {
+    background: $color4;
+    margin-bottom: $block-space;
+    border-radius: $border-radius-small;
+    overflow: hidden;
+
+    :last-child {
+        margin-bottom: 0;
+    }
+
+    .widgettitle {
+        display: block;
+        margin-bottom: 0;
+        background: $color1;
+        color: $color-white;
+        font-size: $input-btn-font-size;
+        padding: map-get($spacers,2);
+        // font-family: $font2;
+        // min-height: $input-btn-height;
+        // line-height: $input-btn-line-height;
+        // padding: $input-btn-padding-y map-get($spacers,2);
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    > div {
+        padding: map-get($spacers,2);
+    }
+}

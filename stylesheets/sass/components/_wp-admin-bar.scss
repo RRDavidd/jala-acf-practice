@@ -1,0 +1,25 @@
+ /*** WP Admin Bar ***/
+ body.logged-in .header.clone-full {
+    margin-top: 32px;
+    @media only screen and (max-width:782px) {
+        margin-top: 46px;
+    }
+}
+
+// To be deleted when found the styles on the top are completed by LM
+// html.jd-logged-in, html.jd-logged-in body, * html.jd-logged-in body {
+//     margin-top: -32px;
+//     @media only screen and (max-width:782px) {
+//         margin-top: -46px;
+//     }
+// }
+
+// html.jd-logged-in #wpadminbar {
+//     opacity: 0.5;
+//     z-index: $z-index-overlay;
+//     @extend %transition-all;
+
+//     &:hover {
+//         opacity: 1;
+//     }
+// }

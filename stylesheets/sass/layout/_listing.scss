@@ -1,0 +1,56 @@
+// /* =General Listing
+// ========================================================================================*/
+.list-item {
+    .list-item-body {
+        position: relative;
+        .list-item-img {
+            overflow: hidden;
+            display: block;
+            width: 100%;
+            img {
+                width: 100%;
+                @extend %transition-all;
+                backface-visibility: initial; //Fix gap issue with percentage columns.
+            }
+            &.placeholder-img {
+                background: $color4;
+            }
+        }
+        .list-item-content{
+            @extend %transition-all;
+        }
+    }
+    > a, figure a {
+        display: block;
+        &:hover  {
+            .list-item-content {
+                color: $color-white;
+            }
+            figure {
+                @extend %growed;
+            }
+        }
+    }
+    a, .list-item-content {
+        color: $color4;
+    }
+}
+
+// Addign "same height" functionality with IE Compatibility
+.listing.same-height {
+    .list-item {
+        // display: flex;
+        // flex-direction: column;
+        .list-item-body {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            .list-item-img {
+                overflow: initial !important; /* To avoid overflow:hidden */
+            }
+            .list-item-content {
+                height: 100%; /* For the Match height with Flex*/
+            }
+        }
+    }
+}

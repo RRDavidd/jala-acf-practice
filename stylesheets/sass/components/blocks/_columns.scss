@@ -1,0 +1,75 @@
+/* = column blocks
+========================================================================================*/
+.column-block {
+	&.full-width {
+		> .wrap, > div[class^='wrap'], > div[class*=' wrap'] {
+			max-width: none;
+			padding-left: 0 !important;
+			padding-right: 0 !important;
+		}
+	}
+
+	&.cols-responsive-no-gap {
+
+		@include media-breakpoint-between(md, lg) {
+			.col-6.col-item:nth-child(4n),.col-6.col-item:nth-child(4n-1){
+				.col-item-content {
+					padding-top: 0 !important;
+				}
+			}
+		}
+
+		@include media-breakpoint-down(sm) {
+			.col-item:nth-child(n+2) {
+				.col-item-content {
+					padding-top: 0 !important;
+				}
+			}
+		}
+	}
+
+
+	&.cols-responsive-no-gap-between-md-lg {
+
+		@include media-breakpoint-between(md, lg) {
+			.col-6.col-item:nth-child(4n),.col-6.col-item:nth-child(4n-1){
+				.col-item-content {
+					padding-top: 0 !important;
+				}
+			}
+		}
+	}
+
+	&.cols-responsive-no-gap-sm {
+
+		@include media-breakpoint-down(sm) {
+			.col-item:nth-child(n+2) {
+				.col-item-content {
+					padding-top: 0 !important;
+				}
+			}
+		}
+	}
+	&.block-p {
+		.col-item-content.bg-color-alt {
+			background-color: $color-white  !important;
+		}
+	}
+}
+
+.cols.same-height, .cols-grid.same-height {
+	.col-item {
+		.col-item-content-wrapper {
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+			.col-item-content {
+				height: 100%;
+                &.bg-color1 a {
+                    color: $color-black;
+                    text-decoration: underline;
+                }
+			}
+		}
+	}
+}

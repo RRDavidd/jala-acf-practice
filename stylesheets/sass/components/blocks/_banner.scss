@@ -1,0 +1,53 @@
+/* =Banner Block
+========================================================================================*/
+
+.banner-block {
+
+    .banner {
+        &, & figure, & figure a {
+            max-height: rem(735);
+            overflow: hidden;
+        }
+        figure, figure a {
+            position: relative;
+            display: block;
+        }
+        figure {
+            .figure-img {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            .banner-text-overlay {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                text-align: center;
+                figcaption {
+                    position: relative;
+                    display: inline-block;
+                    margin-bottom: map-get( $spacers , 4 );
+                    padding: 0 map-get( $spacers , 3 );
+                    @include media-breakpoint-down(md) {
+                        font-size: 6vw;
+                        // padding:0  map-get( $spacers , 2 );
+                        margin-bottom: map-get( $spacers , 4);
+                    }
+                    @include media-breakpoint-down(sm) {
+                        display: none;
+                    }
+                    span {
+                        display: inline-block;
+                        position: relative;
+                        z-index: 1;
+                    }
+                }
+            }
+        }
+    }
+
+    .wrap-small .banner-text-overlay figcaption {
+        font-size:rem(28);
+    }
+}

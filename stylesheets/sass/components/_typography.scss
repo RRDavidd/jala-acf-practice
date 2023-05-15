@@ -1,0 +1,170 @@
+/*=Typography
+========================================================================================*/
+
+// Headings
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: $font2;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    line-height: 1.1;
+    color: $color3;
+    margin-bottom: $content-space;
+    display: block; // For the "hX" classes
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+h1, .h1 {
+    font-size: $h1-size;
+}
+
+h2, .h2 {
+    font-size: $h2-size;
+}
+
+h3, .h3 {
+    font-size: $h3-size;
+}
+
+h4, .h4 {
+    font-size: $h4-size;
+}
+
+h5, .h5 {
+    font-size: $h5-size;
+}
+
+h6, .h6 {
+    font-size: $h6-size;
+}
+
+.main-heading {}
+
+.lead, .text-emphasis {
+    font-family: $font1;
+    font-size: rem($font-size-base * 1.1);
+    font-weight: $font-weight-bold;
+    color: $color2;
+}
+
+small, .small {
+    font-size: 75%;
+}
+
+// HR
+hr {
+    height: $custom-element-height;
+    border-radius: $border-radius-small;
+    border: 0;
+    margin: map-get($spacers, 3) 0;
+    background-color: $color2;
+}
+
+// Blockquote
+blockquote {
+    background: $color4;
+    padding: map-get($spacers, 5);
+    quotes: "\201C" "\201D";
+    font-style: italic;
+    font-size: rem($font-size-base * 1.3);
+
+    &:before {
+        color: $color3;
+        content: open-quote;
+        font-size: rem(100);
+        line-height: 0.1;
+        vertical-align: rem(-40);
+        margin-right: map-get($spacers, 2);
+    }
+
+    p {
+        display: inline;
+    }
+}
+
+// Paragraphs, UL / OL
+p, blockquote {
+    margin-bottom: $content-space;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+p, ul, ol {
+    //font-size: rem($font-size-base);
+    line-height: $content-line-height;
+}
+
+// UL / OL
+.entry ul#{$excluded_ul_ol_classes}, .entry ol#{$excluded_ul_ol_classes} {
+    margin-bottom: $content-space;
+
+    li {
+
+        .entry ul#{$excluded_ul_ol_classes}, .entry ol#{$excluded_ul_ol_classes} {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.entry {
+    ul#{$excluded_ul_ol_classes} {
+        padding-left: $content-space;
+        margin: 0 0 $content-space $content-space;
+        list-style-image: url("../../images/bgi/bullet.svg");
+
+        li {
+            padding-left: $content-space/2;
+
+            ul {
+                list-style-image: url("../../images/bgi/bullet-linear-circle.svg");
+                margin: 0;
+            }
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .bg-color1 ul#{$excluded_ul_ol_classes}, .font-color-white-strict ul#{$excluded_ul_ol_classes} {
+        list-style-image: url("../../images/bgi/bullet-alt.svg");
+
+        li {
+            ul {
+                list-style-image: url("../../images/bgi/bullet-linear-circle-alt.svg");
+            }
+        }
+    }
+
+    ol#{$excluded_ul_ol_classes} {
+        padding-left: $content-space;
+        margin: 0 0 $content-space $content-space;
+        list-style-type: decimal;
+
+        li {
+            padding-left: $content-space/2;
+
+            ol {
+                list-style-type: lower-roman;
+                margin: 0;
+
+                li {
+                    ol {
+                        list-style-type: lower-latin;
+                    }
+                }
+            }
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+// Font Weight Generation
+@include generate-font-weights($font-weights);

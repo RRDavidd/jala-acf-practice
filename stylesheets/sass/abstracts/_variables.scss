@@ -1,0 +1,167 @@
+// Font Family
+$font1: "Roboto", sans-serif; // Primary (Body font)
+$font2: "Montserrat", sans-serif; // Secondary (Headings font)
+
+// Font base specs
+$font-size-base: 18; // Assumes the browser default, typically `16px`
+$content-line-height: 1.4;
+
+// Font Weight Variables
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+/*
+* @Font Weight Classes to be Created
+*
+* Automatically created classes based on the values inside the variable $font-weights;
+* .font-weight-thin, .font-weight-thin... etc..
+*
+* To use manually use - map-get($font-weights, bold);
+*
+* .my-custom-class {
+*  font-weight: map-get($font-weights, bold);
+*  Other styles...
+* }
+*
+*/
+
+$font-weights: (
+    "thin": 100,
+    "extralight": 200,
+    "light": 300,
+    "normal": 400,
+    "medium": 500,
+    "semibold": 600,
+    "bold": 700,
+    "extrabold": 800,
+    "extra-bold": 800,
+    "black": 900,
+);
+
+// Colours - Extra colours follow the following format: color<[0-9]>: hex
+$color1: #82bc00; // Primary (Link colour)
+$color2: #000000; // Secondary (Link hover colour)
+$color3: #000000; // Tertiary (Body font colour)
+$color4: #ebedee; // Quaternary (Quotes Bg colour)
+
+$color-black: #000000;
+$color-white: #ffffff;
+
+$wrapper-color: $color-white;
+
+$success: $color1;
+$info: #17a2b8;
+$warning: #ffc107;
+$danger: #dc3545;
+
+$light: lighten($color4, 3%); // scale-color($color4, $lightness: 30%);
+$dark: darken($color4, 3%); //scale-color($color4, $lightness: -3%);
+
+$bg-gradient: linear-gradient(180deg, rgba($color4, 0.9) 0%, $color-white 100%);
+
+// Layout
+$wrap-width: 1550px;
+$wrap-width-small: 800px;
+$wrap-width-medium: 1300px;
+$wrap-width-large: 2500px;
+
+// Grid breakpoints
+$grid-breakpoints: (xs: 0,
+    sm: 460px,
+    md: 768px,
+    lg: 1024px,
+    xl: 1280px,
+    xxl: 1600px,
+);
+
+//Responsive Fonts
+$root-min-width: map-get($grid-breakpoints, sm);
+$root-max-width: map-get($grid-breakpoints,
+        xxl); //Recommemded to be biggest breakpoint
+$root-min-font: 10px; //JD Could change
+$root-max-font: 16px; //JD Always leave default 16px for HTML
+
+// Spacing - content
+$spacer: rem(40);
+$spacers: ();
+$spacers: map-merge(
+    (
+        0: 0,
+        1: ($spacer * .25),            //10px
+        2: ($spacer * .5),             //20px
+        3: $spacer,                    //40px
+        4: ($spacer + ($spacer * .5)), //60px
+        5: ($spacer * 2),              //80px
+        6: ($spacer * 3),              //120px
+        //7: (($spacer * 3) + rem(20)) //140px
+    ), $spacers);
+
+// Grid columns
+$grid-columns: 12;
+$grid-gutter-width: rem(40);
+$grid-gutter-width-small: map-get($spacers, 2);
+$grid-gutter-width-large: map-get($spacers, 4);
+
+// Just for text spacing like P, UL, OL
+$content-space: map-get($spacers, 2);
+
+// Wrap Spacer
+$wrap-space: map-get($spacers, 3);
+
+// Blocks Spacer
+$block-space: map-get($spacers, 3);
+
+// Animation
+$transition-base: 0.3;
+$transition-base-quicker: 0.2;
+$transition-base-slower: 0.5;
+
+// Components
+// Define common padding and border radius sizes and more.
+$border-width: rem(2);
+$border-width-strict: 2px; //Small pixes better keep on "px" instead of "rem"
+$border-color: $color2;
+
+$border-radius: rem(20);
+$border-radius-small: rem(10);
+$border-radius-large: rem(30);
+
+// Buttons + Forms//
+// Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
+$input-btn-font-size: rem(23);
+$input-btn-padding-y: rem(12);
+$input-btn-padding-x: rem(36);
+$input-btn-height: rem(60);
+$input-btn-border-width: $border-width;
+$input-btn-line-height: $content-line-height; // This variable can be manually changed vertical center button text eg: "1.6"
+$input-btn-background: $color-white;
+
+// Spacing
+$space1: map-get($spacers, 1);
+$space2: map-get($spacers, 2);
+$space3: map-get($spacers, 3);
+$space4: map-get($spacers, 4);
+$space5: map-get($spacers, 5);
+$space6: map-get($spacers, 6);
+
+// Misc
+$custom-element-height: 6px; // For Hamburguer menu and other layout elements // Small pixes better keep on "px" instead of "rem"
+$custom-menu-button-element-width: 38px; // On "px" to keep porportional with custom-element-height
+$custom-menu-height: rem(67);
+$z-index-overlay: 10000;
+
+//Selector varaibles
+$excluded_ul_ol_classes: ":not(.unstyled):not(.menu):not(.sub-menu):not(.tags):not(.product-categories):not(.children):not(.page-numbers):not(.products):not(.wc-tabs):not(.woocommerce-shipping-methods):not(.woocommerce-error):not(.woocommerce-order-overview)";
+
+//Sub nav min width variable
+$sub_nav_width: rem(250);
+
+//Heading Sizes
+$h1-size: rem(64);
+$h2-size: rem(44);
+$h3-size: rem(36);
+$h4-size: rem(28);
+$h5-size: rem(24);
+$h6-size: rem(18);

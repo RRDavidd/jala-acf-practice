@@ -1,0 +1,10 @@
+/* =Gallery Block
+========================================================================================*/
+.gallery-block {
+
+    // Main galley styles come components from \stylesheets\sass\components\_gallery.scss
+
+    @include media-breakpoint-down(xs) {
+
+    }
+}

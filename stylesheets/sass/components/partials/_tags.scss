@@ -1,0 +1,53 @@
+/* = Tags
+========================================================================================*/
+.tags {
+	display: flex;
+	flex-wrap: wrap;
+	@extend %transition-all;
+
+	li {
+		margin-right: map-get($spacers, 1);
+
+		a,
+		span {
+			display: inline-block;
+			background: $color4;
+			color: $color2;
+			font-size: $input-btn-font-size/1.5;
+			line-height: $content-line-height;
+			text-decoration: none;
+			min-height: $input-btn-height/1.5;
+			padding: $input-btn-padding-y/1.5 $input-btn-padding-x/1.5;
+			border-radius: $border-radius/1.5;
+
+			&:hover:not(span) {
+				background: $color2;
+				color: $color-white;
+			}
+		}
+
+		&:last-child {
+			margin-right: 0;
+
+			a,
+			span {
+				margin-right: 0;
+			}
+		}
+	}
+}
+
+.tags-wrapper.multi-line {
+	overflow: hidden;
+
+	ul {
+		// margin-bottom: map-get($spacers,1) * -1; Fix for breaking undefined operation/
+		margin-bottom: -(map-get($spacers, 1));
+
+		li {
+			.tag-item {
+				margin-bottom: map-get($spacers, 1);
+			}
+		}
+	}
+}

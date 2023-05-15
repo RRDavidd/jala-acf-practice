@@ -1,0 +1,87 @@
+/* =My Account page
+========================================================================================*/
+
+.woocommerce-MyAccount-navigation {
+    background: $color2;
+    border-radius: $wc-border-radius;
+    float: right !important;
+    ul {
+        padding: 0 !important;
+        margin: 0 !important;
+        list-style-type: none;
+        li {
+            padding:  map-get( $spacers, 2 ) 0 !important;
+            display: block;
+            border-bottom: $border-width solid $color-white;
+            &:last-child {
+                border-bottom: none;
+            }
+            &:before {
+                display: none;
+            }
+            a {
+                text-decoration: none;
+                font-size: map-get( $spacers, 2 );
+                color: $color-white;
+                display: block;
+                line-height: 1;
+                margin-left: map-get( $spacers, 2 );
+                &:hover {
+                    color: $color1;
+                }
+            }
+        }
+    }
+}
+
+
+.woocommerce-MyAccount-content {
+    float: left !important;
+}
+
+
+.woocommerce-form__label.woocommerce-form__label-for-checkbox {
+    line-height: $input-btn-height !important;
+}
+
+.woocommerce-account .woocommerce .col2-set .col-1{
+    width: 48%;
+    float: left;
+}
+
+.woocommerce-account .col2-set .col-2 {
+    float: right;
+    width: 48%;
+}
+
+.woocommerce-account {
+
+    .woocommerce-EditAccountForm {
+        .woocommerce-form-row {
+            span {
+                em {
+                    font-size: 12px;
+                }
+            }
+
+        }
+        fieldset {
+            legend {
+                font-weight: bold;
+                padding-top: $content-space;
+                margin-bottom: $content-space;
+            }
+        }
+    }
+}
+
+// @include media-breakpoint-up(lg) { }
+
+// @include media-breakpoint-up(md) {
+//     ul {
+//         list-style: none;
+//         background-color: $color1;
+//         border-radius: $border-radius;
+//         padding: 40px !important;
+//     }
+// }

@@ -1,0 +1,85 @@
+/* =Side Menu - Menu Widget
+========================================================================================*/
+.widget.widget_jdw_menu {
+    background: $color1;
+    border-radius: $border-radius-small;
+    overflow: hidden;
+
+    .widget_jdw_nav {
+
+        li {
+            padding:  map-get( $spacers, 2 ) 0 !important;
+            display: block;
+            border-bottom: $border-width solid $color-white;
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            a {
+                text-decoration: none;
+                font-size: map-get( $spacers, 2 );
+                color: $color-white;
+                display: block;
+                line-height: 1;
+                margin-left: map-get( $spacers, 2 );
+                &:hover {
+                    color: $color4;
+                }
+            }
+        }
+
+        li.current-menu-item,
+        li.current-menu-parent,
+        li.current-menu-ancestor    {
+            >a {
+                font-weight: $font-weight-bold;
+            }
+            >.sub-menu {
+                display: block;
+            }
+        }
+
+        .sub-menu {
+            padding: 0;
+            margin-bottom: 0;
+            display: none;
+
+            li {
+                padding:  map-get( $spacers, 2 ) 0 !important;
+
+                a {
+                    padding-left: map-get( $spacers, 2 );
+                    font-size: map-get( $spacers, 2 );
+                }
+            }
+
+            >li {
+                &:first-child {
+                    margin-top:  map-get( $spacers, 2 );
+                    border-top: $border-width solid #ffffff;
+                }
+            }
+
+            .sub-menu {
+                li {
+                    a {
+                        padding-left: map-get( $spacers, 3 );
+                        font-size: rem(18);
+                        font-style: italic;
+                    }
+                }
+            }
+        }
+        li.current-menu-item.menu-item-has-children,  li.current-menu-parent.menu-item-has-children, li.current-menu-ancestor.menu-item-has-children  {
+                padding-bottom: 0 !important;
+        }
+    }
+}
+
+
+
+// /* Not be displayed when is not page active*/
+// #sidebar .menu .sub-menu { display: none;}
+// #sidebar .menu li.current-menu-item > .sub-menu, #sidebar .menu li.current-menu-parent > .sub-menu, #sidebar .menu li.current-menu-ancestor > .sub-menu  { display: block;}
+// /*******  If you have all displayed, removed last section and update rule: #sidebar li.menu-item-has-children { padding-bottom:0!important; } *****/

@@ -1,0 +1,21 @@
+.icons-block {
+  .icons-col:nth-child(n+2) {
+    border-left: 1px solid black;
+  }
+}
+
+@media (max-width: map-get($grid-breakpoints, lg)){
+  .icons-block {
+    .icons-col:nth-child(n+2) {
+      border-left: 0;
+    }
+  }
+}
+
+@media (max-width: map-get($grid-breakpoints, md)){
+  .icons-block {
+    .icons-col:nth-child(n+2) {
+      border-left: 0;
+    }
+  }
+}

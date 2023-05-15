@@ -1,0 +1,16 @@
+// Variables Moved to Theme Variables
+
+//Custom import just Grid and Utilities
+@import "../../../node_modules/bootstrap/scss/bootstrap-grid";
+@import "../../../node_modules/bootstrap/scss/utilities/sizing";
+@import "../../../node_modules/bootstrap/scss/utilities/spacing";
+@import "../../../node_modules/bootstrap/scss/utilities/align";
+
+// Option A: Include all of Bootstrap
+//@import "../../../node_modules/bootstrap/scss/bootstrap";
+
+// Option B: Custom import
+// Required
+//@import "../node_modules/bootstrap/scss/functions";
+//@import "../node_modules/bootstrap/scss/variables";
+//@import "../node_modules/bootstrap/scss/mixins";

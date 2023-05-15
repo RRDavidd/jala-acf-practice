@@ -1,0 +1,175 @@
+/* =Grid
+========================================================================================*/
+.cols {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 0;
+    margin-left: 0;
+
+    > .col, > [class*="col-"] {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+.cols-grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 0;
+    margin-left: -$grid-gutter-width;
+
+    > .col, > [class*="col-"] {
+        padding-right: 0;
+        padding-left: $grid-gutter-width;
+    }
+
+    &:not(.grid-flat)  > .col, &:not(.grid-flat) > [class*="col-"] {
+        margin-bottom: $grid-gutter-width;
+    }
+
+    &.grid-small  {
+        margin-left: -($grid-gutter-width-small);
+    }
+
+    &.grid-small > .col, &.grid-small > [class*="col-"] {
+        padding-left: $grid-gutter-width-small;
+    }
+
+    &.grid-small:not(.grid-flat)  > .col, &.grid-small:not(.grid-flat) > [class*="col-"] {
+        margin-bottom: $grid-gutter-width-small;
+    }
+
+    &.grid-large  {
+        margin-left: -($grid-gutter-width-large);
+    }
+
+    &.grid-large > .col, &.grid-large > [class*="col-"] {
+        padding-left: $grid-gutter-width-large;
+    }
+
+    &.grid-large:not(.grid-flat)  > .col, &.grid-large:not(.grid-flat) > [class*="col-"] {
+        margin-bottom: $grid-gutter-width-large;
+    }
+}
+
+/* New class to add space-evenly to modern browser, with compabitlity to space-around with IE and Edge*/
+.justify-content-evenly {
+    justify-content: space-evenly;
+}
+
+/* Class to add negative bottom margin to the grid*/
+.grid-flat-n {
+    margin-bottom: -$grid-gutter-width;
+    &.grid-small {
+        margin-bottom: -$grid-gutter-width-small;
+    }
+    &.grid-large {
+        margin-bottom: -$grid-gutter-width-large;
+    }
+}
+
+/* It will create a fluid column layout, based on size the wider col (content) per row, to fit the screen.
+    Ex: if there is a col with a long word, it will keep the same size for the rest of the columns (wider column) in that row.
+    Recommneded for 1 line grids, ex: 3 or 4 cols wide.
+*/
+.fluid-cols {
+    @include fluid-cols;
+}
+
+.fluid-banner-one {
+    > [class*="col-"]:first-child {
+        flex-basis: 100%;
+    }
+}
+
+.fluid-banner-two {
+    > [class*="col-"]:nth-child(-n + 2) {
+        flex-basis: 50%;
+    }
+}
+
+.fluid-banner-odd {
+    > [class*="col-"]:first-child:nth-last-child(odd) {
+        flex-basis: 100%;
+    }
+}
+
+/*Media Query "DOWN" Classes*/
+/*============================================*/
+
+@include media-breakpoint-down(sm) {
+    .cols-grid:not(.cols-strict) {
+        margin-left: 0;
+    }
+
+    .cols:not(.cols-strict) > .col, .cols:not(.cols-strict) > [class*="col-"] , .cols-grid:not(.cols-strict) > [class*="col-"], .cols-grid:not(.cols-strict) > .col {
+        width: 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .cols-grid:not(.cols-strict) > .col, .cols-grid:not(.cols-strict) > [class*="col-"] {
+        padding-left: 0;
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .grid-sm-small {
+        margin-left: -($grid-gutter-width-small);
+    }
+
+    .grid-sm-small > .col, .grid-sm-small > [class*="col-"] {
+        padding-left: $grid-gutter-width-small;
+    }
+
+    .grid-sm-small:not(.grid-flat) > .col, .grid-sm-small:not(.grid-flat) > [class*="col-"] {
+        margin-bottom: $grid-gutter-width-small;
+    }
+}
+
+/*Media Query "UP" Classes*/
+/*============================================*/
+
+@include media-breakpoint-up(xl) {
+
+    /* It will create a fluid column layout, based on size the wider col (content) per row, to fit the screen.
+        Ex: if there is a col with a long word, it will keep the same size for the rest of the columns (wider column) in that row.
+        Recommneded for 1 line grids, ex: 3 or 4 cols wide.
+    */
+    .fluid-cols-xl-up {
+        @include fluid-cols;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+
+    /* It will create a fluid column layout, based on size the wider col (content) per row, to fit the screen.
+        Ex: if there is a col with a long word, it will keep the same size for the rest of the columns (wider column) in that row.
+        Recommneded for 1 line grids, ex: 3 or 4 cols wide.
+    */
+    .fluid-cols-lg-up {
+        @include fluid-cols;
+    }
+}
+
+@include media-breakpoint-up(md) {
+
+    /* It will create a fluid column layout, based on size the wider col (content) per row, to fit the screen.
+        Ex: if there is a col with a long word, it will keep the same size for the rest of the columns (wider column) in that row.
+        Recommneded for 1 line grids, ex: 3 or 4 cols wide.
+    */
+    .fluid-cols-md-up {
+        @include fluid-cols;
+    }
+}
+
+@include media-breakpoint-up(sm) {
+
+    /* It will create a fluid column layout, based on size the wider col (content) per row, to fit the screen.
+        Ex: if there is a col with a long word, it will keep the same size for the rest of the columns (wider column) in that row.
+        Recommneded for 1 line grids, ex: 3 or 4 cols wide.
+    */
+    .fluid-cols-md-sm {
+        @include fluid-cols;
+    }
+}

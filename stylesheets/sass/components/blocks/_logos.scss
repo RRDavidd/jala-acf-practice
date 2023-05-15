@@ -1,0 +1,17 @@
+.logos-block{
+  .slick-current+.slick-slide+.slick-slide+.slick-slide+.slick-slide{
+    border-right: none!important;
+  }
+  .logos-col:nth-child(n+2) {
+    border-right: 1px solid black;
+  }
+}
+
+.logos-block5{
+  .slick-current+.slick-slide+.slick-slide+.slick-slide{
+    border-right: none!important;
+  }
+  .logos-col:nth-child(n+2) {
+    border-right: 1px solid black;
+  }
+}

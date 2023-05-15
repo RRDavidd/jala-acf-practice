@@ -1,0 +1,34 @@
+/* =Social Network
+========================================================================================*/
+
+.social-network {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    @include media-breakpoint-down(sm) {
+        justify-content: center;
+    }
+    a {
+        position: relative;
+        color: $color-white;
+        font-size: 0;
+        text-indent: -999em;
+        overflow: hidden;
+        width: $input-btn-height;
+        height: $input-btn-height;
+        padding-right: 0;
+        padding-left: 0; // Less 4 "pixels" from Span width due to border;
+        @extend %transition-all-children;
+        svg {
+            width: rem(30);
+            height: rem(30);
+            @extend %vh-center;
+        }
+
+        &:hover {
+            svg * {
+                fill: $color3;
+            }
+        }
+    }
+}

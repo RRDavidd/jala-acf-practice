@@ -1,0 +1,124 @@
+/* =Page Overlay
+========================================================================================*/
+.page-overlay-displayed {
+	overflow: hidden;
+}
+
+.page-overlay {
+	opacity: 0;
+	display: none;
+	left: 0;
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: $z-index-overlay;
+	background:$color1;
+	background:$bg-gradient;
+	::-webkit-scrollbar-track {
+		background-color: rgba($color4, 0.8);
+	}
+	::-webkit-scrollbar {
+		width: rem(6);
+		background-color: rgba($color4, 0.8);
+		}
+	::-webkit-scrollbar-thumb {
+		background-color: rgba($color1, 0.8);
+		cursor: pointer;
+	}
+
+	.page-overlay-content {
+		opacity: 0;
+		margin-top: -500px;
+		position: fixed;
+		width: 100%;
+		// max-width: 1200px;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		z-index: 800;
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+		-webkit-transform: tranzlateZ(0);
+		transform: tranzlateZ(0);
+
+		.vertical_align_wrapper {
+			.vertical_align_content {
+				background-color: $color1;
+				padding: rem(60) 0;
+			}
+		}
+
+	}
+
+	&.overlay-top {
+		.page-overlay-content {
+			overflow: hidden;
+
+			.page-overlay-content-main {
+				// max-width: rem(800);
+				height: 100%;
+				overflow: auto;
+			}
+
+			.vertical_align_wrapper {
+				.vertical_align_content {
+					vertical-align: top;
+					padding: rem(160) 0 rem(40);
+				}
+			}
+		}
+	}
+}
+
+
+.page-overlay.actived {
+	visibility: visible;
+	display: block;
+}
+.page-overlay.displayed {
+	opacity: 1;
+}
+.page-overlay-content.displayed {
+	opacity: 1;
+	margin-top: 0;
+}
+.overflow-container {
+	max-height: 100%;
+	overflow: auto;
+	text-align: right;
+}
+
+.close_overlay {
+	position: absolute;
+	right: map-get( $spacers, 3 );
+	top:  map-get( $spacers, 3 );
+	span {
+		&:before, &:after, & {
+			background-color: $color-white;
+		}
+	}
+	// &:hover span {
+	// 	&:before, &:after, & {
+	// 		background-color: $color3 !important;
+	// 	}
+	// }
+}
+
+@include media-breakpoint-down(sm) {
+	.page-overlay .page-overlay-content {
+		width: 100%;
+	}
+	.responsive-menu {
+		max-width: 95% !important;
+		.menu-item-has-children > span {
+			width: 24px !important;
+			height: 24px !important;
+			&:after {
+				background-size: 12px !important;
+				line-height: 1 !important;
+			}
+		}
+	}
+}

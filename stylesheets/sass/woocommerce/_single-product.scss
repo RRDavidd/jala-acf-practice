@@ -1,0 +1,123 @@
+.woocommerce {
+  &.single-product {
+
+    .summary {
+      .single_add_to_cart_button {
+        float: none!important;
+      }
+
+      .product_meta {
+        > span {
+          display: block;
+          &:not(:last-child) {
+            margin-bottom: $content-space;
+          }
+
+          .sku {
+            font-weight: bold;
+          }
+          a {
+            font-weight: bold;
+          }
+        }
+      }
+
+      .cart {
+        margin-bottom: $content-space;
+      }
+
+      select {
+        display: block!important;
+      }
+    }
+
+    .woocommerce-tabs {
+      .wc-tabs {
+        // width:100%;
+        margin-bottom: 0!important;
+        padding:0!important;
+        list-style:none;
+        // display: flex;
+        // flex-wrap: wrap;
+
+        &:before {
+          display: none!important;
+        }
+
+        li {
+          // flex: 1;
+          border-radius: 0!important;
+          border: 0!important;
+          float:left;
+          position:relative!important;
+          margin:0!important;
+          text-align:center!important;
+          padding:0!important;
+
+          &:before,
+          &:after {
+            display: none;
+          }
+
+          a {
+            padding: map-get( $spacers, 2 ) map-get( $spacers, 3 )!important;
+            text-decoration:none;
+            color: $color-black!important;
+            background:$color1;
+            font-size:rem(24);
+            height: 100%;
+            cursor: pointer;
+            text-transform: uppercase;
+            display: flex!important;
+            align-items: center;
+            justify-content: center;
+            &:hover {
+              background:$color2;
+              color:$color1!important;
+            }
+          }
+          &.active {
+            & a {
+              background:$color2;
+              color:$color1!important;
+            }
+          }
+        }
+      }
+
+      .woocommerce-Tabs-panel {
+          padding:map-get( $spacers,2 )!important;
+          background:$color4;
+      }
+
+      .shop_attributes {
+        border-top: 1px solid $color2!important;
+
+        th {
+          color: $color1;
+          background: $color2!important;
+          border-right: 0;
+          border-bottom: 1px solid $color2!important;
+        }
+
+        td {
+          padding-left: $content-space;
+          padding-right: $content-space;
+          background: $color4!important;
+          border-bottom: 1px solid $color2!important;
+          border-right: 1px solid $color2!important;
+          vertical-align: middle!important;
+
+          a {
+            color: $color-black;
+
+            &:hover {
+              color: $color1;
+            }
+          }
+
+        }
+      }
+    }
+  }
+}

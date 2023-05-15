@@ -1,0 +1,16 @@
+/* =Breadcrumbs
+========================================================================================*/
+
+.breadcrumbs, #breadcrumbs {
+    color: $color3;
+    // opacity: 0.8; // Remove for Accessibility performance
+    margin-top: map-get( $spacers, 1 );
+
+    a {
+        color: $color1;
+        text-decoration: none !important;
+        &:hover {
+            color: $color2;
+        }
+    }
+}

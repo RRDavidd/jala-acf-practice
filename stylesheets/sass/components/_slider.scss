@@ -1,0 +1,90 @@
+/* =Slider
+========================================================================================*/
+/* Dots */
+.slick-dotted.slick-slider {
+    // margin-bottom: map-get( $spacers, 2 );
+}
+
+/* Dots Horizontal */
+.slick-dots {
+    position: absolute;
+    display: block;
+    padding: 0 !important;
+    margin: 0 0 map-get($spacers,2) !important;
+    list-style: none !important;
+    width: 100%;
+    text-align: center;
+    bottom: 0;
+    li {
+        position: relative;
+        display: inline-block;
+        margin: 0 map-get($spacers,2);
+        padding: 0;
+        cursor: pointer;
+        button {
+            font-size: 0 !important;
+            text-indent: -999em !important;
+            line-height: 0 !important;
+            min-height: 0 !important;
+            display: block !important;
+            width: rem(20) !important;
+            height: rem(20) !important;
+            padding: 0 !important;
+            cursor: pointer !important;
+            background: $color4 !important;
+            border: none !important;
+            border-radius: 50% !important;
+        }
+    }
+
+    li.slick-active {
+        button {
+            background: $color1 !important;
+        }
+    }
+
+    @include media-breakpoint-down(xs) {
+        // display: none !important;
+    }
+}
+
+.vertical-dots .slick-dots  {
+    width: rem(38);
+    top: 50%;
+    right: 0;
+    bottom: auto;
+    transform: translateY(-50%);
+    margin: 0 !important;
+    li {
+        margin: map-get($spacers,2) 0 ;
+    }
+}
+
+
+/* Slider Arrows*/
+button[type="button"].slick-arrow, .slick-arrow  {
+    position: absolute;
+    top: 50%;
+    z-index: $z-index-overlay*.5;
+    text-indent: -999em;
+    margin-top: ( ($input-btn-height/2) + ($border-width/2) ) * -1 !important;
+    background: url(../../images/bgi/triangle.svg) no-repeat center center  $color1!important;
+    background-size: rem(20) !important;
+    overflow: hidden;
+    // If dont want to use default "button" on JS add following styles
+    // min-height: rem(40);
+    // min-width: rem(40);
+    &:hover {
+        background: url(../../images/bgi/triangle.svg) no-repeat center center  $color2!important;
+        border-color: $color2!important;
+        background-size: rem(20) !important;
+    }
+    &.slick-prev {
+        left: 0;
+        transform: rotate(90deg);
+    }
+    &.slick-next {
+        right: 0;
+        transform: rotate(-90deg);
+    }
+}

@@ -1,0 +1,302 @@
+// As is often the case, some devices/browsers need additional code to get CSS to work
+// in the most desired way. These mixins are used to quickly drop in hacks for each element
+@mixin hideTapHighlightColor() {
+    //Prevent highlight colour when element is tapped
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+@mixin hardwareAccel() {
+    //Improve performance on mobile/tablet devices
+    transform: translateZ(0);
+}
+
+@mixin improveAntiAlias() {
+    //Improve aliasing on mobile/tablet devices
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+// Creates overlay.
+// Parent must have postion of relative.
+@mixin overlay($color, $duration: 0.3s, $alpha: 0.2) {
+    &:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color, 0);
+        transition: background-color $duration ease-in-out;
+        content: "";
+    }
+
+    &:hover:before {
+        background-color: rgba($color, $alpha);
+    }
+}
+
+// Grow effect
+@mixin grow($duration: 0.3s) {
+    transition: transform $duration ease-in-out;
+
+    &:hover {
+        transform: scale(1.02);
+    }
+}
+
+// Overlay + Grow effect
+@mixin overlay-grow($sel: div, $color: #000000, $duration: 0.3s, $alpha: 0.2s) {
+    &:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color, 0);
+        transition: background-color $duration ease-in-out;
+        z-index: 200;
+        content: "";
+    }
+
+    #{$sel} {
+        transition: transform $duration ease-in-out;
+    }
+
+    &:hover:before {
+        background-color: rgba($color, $alpha);
+    }
+
+    &:hover>#{$sel} {
+        transform: scale(1.05);
+    }
+}
+
+// Spin effect
+@mixin spin($rotation: 360, $speed: 0.2, $child-sel: null, $origin: null) {
+    @if $origin {
+        $origin: unquote($origin);
+    }
+
+    @if $child-sel !=null {
+        #{$child-sel} {
+            transition: #{$speed}s transform linear;
+
+            @if $origin !=null {
+                transform-origin: $origin;
+            }
+        }
+
+        &:hover>#{$child-sel} {
+            transform: rotate(#{$rotation}deg);
+        }
+    }
+
+    @else {
+        transition: #{$speed}s transform linear;
+
+        @if $origin !=null {
+            transform-origin: $origin;
+        }
+
+        &:hover {
+            transform: rotate(#{$rotation}deg);
+        }
+    }
+}
+
+// Pop effect
+@keyframes pop {
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@mixin pop($speed: 0.2) {
+    @include hideTapHighlightColor();
+    @include hardwareAccel();
+    @include improveAntiAlias();
+
+    &:hover {
+        animation-name: pop;
+        animation-duration: #{$speed}s;
+        animation-timing-function: linear;
+        animation-iteration-count: 1;
+    }
+}
+
+// Creates equal width and height element
+@mixin size($width, $height: $width) {
+    width: $width;
+    height: $height;
+}
+
+// Creates equal width and height circular element
+@mixin circle($width, $height: $width) {
+    width: $width;
+    height: $height;
+    border-radius: 50%;
+}
+
+/// Shorthand mixin for offset positioning
+/// @param {String} $position - Either `relative`, `absolute` or `fixed`
+/// @param {Length} $top [null] - Top offset
+/// @param {Length} $right [null] - Right offset
+/// @param {Length} $bottom [null] - Bottom offset
+/// @param {Length} $left [null] - Left offset
+@mixin position($position,
+    $top: null,
+    $right: null,
+    $bottom: null,
+    $left: null) {
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+// Set column width
+// $number comes from: col_#{$number}of#{$grid-columns}
+@mixin set-column-width($number, $gutter: true, $gutter-override: false) {
+    $c-grid-spacing: null;
+
+    @if $gutter-override !=false {
+        $c-grid-spacing: $gutter-override;
+    }
+
+    @else {
+        $c-grid-spacing: $grid-spacing;
+    }
+
+    @if $gutter ==true {
+        width: (100% / $grid-columns * $number) - ($c-grid-spacing * ($grid-columns - $number) / $grid-columns);
+    }
+
+    @else {
+        width: (100% / $grid-columns * $number);
+    }
+}
+
+// Creates ratio height using padding.
+@mixin ratio-height($width, $height) {
+    padding-bottom: ($height/$width) * 100%;
+}
+
+// Creates close icon
+@mixin close-icon($icon-color: $color-white) {
+    span {
+        display: block;
+        width: 100%;
+        height: 5px;
+        background-color: transparent;
+        font-size: 0;
+        border-radius: 15%;
+        @extend %v-center;
+        transition: background 0.3s ease-in-out;
+
+        &:before {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: block;
+            width: 100%;
+            height: 5px;
+            background-color: $icon-color;
+            content: "";
+            border-radius: 15%;
+            transition: all 0.3s ease-in-out, 0.25s;
+            transform: rotate(45deg);
+        }
+
+        &:after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: block;
+            width: 100%;
+            height: 5px;
+            background-color: $icon-color;
+            content: "";
+            border-radius: 15%;
+            transition: all 0.3s ease-in-out, 0.25s;
+            transform: rotate(-45deg);
+        }
+    }
+}
+
+//Fluid Type for Responsive font sizing.
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+    $u1: unit($min-vw);
+    $u2: unit($max-vw);
+    $u3: unit($min-font-size);
+    $u4: unit($max-font-size);
+
+    @if $u1 ==$u2 and $u1 ==$u3 and $u1 ==$u4 {
+        & {
+            font-size: $min-font-size;
+
+            @media screen and (min-width: $min-vw) {
+                font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+            }
+
+            @media screen and (min-width: $max-vw) {
+                font-size: $max-font-size;
+            }
+        }
+    }
+}
+
+// For all Heading
+@mixin headings {
+
+    h1, h2, h3, h4, h5, h6 {
+        @content;
+    }
+}
+
+// For all custom block Content tags
+@mixin block-content-tags {
+
+    h1, h2, h3, h4, h5, h6, a, p, ul, ol, blockquote:before, small, strong, span {
+        @content;
+    }
+}
+
+// For .fluid-cols class
+@mixin fluid-cols {
+    >[class*="col-"] {
+        flex-grow: 1;
+        flex-shrink: 0;
+        flex-basis: 0%;
+        max-width: none;
+        min-width: rem(300);
+    }
+
+    >[class*="col-fluid-3"] {
+        min-width: 25%;
+    }
+
+    >[class*="col-fluid-4"] {
+        min-width: 33.3333333333%;
+    }
+
+    >[class*="col-fluid-6"] {
+        min-width: 50%;
+    }
+}
+
+// Generate Font Weights
+@mixin generate-font-weights($font-weights) {
+
+    @each $weight,
+    $value in $font-weights {
+        .font-weight-#{$weight} {
+            font-weight: $value;
+        }
+    }
+}

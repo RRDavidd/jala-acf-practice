@@ -1,0 +1,27 @@
+/* =Button Block
+========================================================================================*/
+.button-block {
+    @include media-breakpoint-down(xs) {}
+
+    a, input, button, .btn {
+        margin-right: map-get($spacers, 1);
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+.multi-line {
+    overflow: hidden;
+
+    .wrap, div[class^="wrap"], div[class*=" wrap"], .multi-line-content {
+        // margin-bottom: map-get($spacers, 2) * -1; Fix for breaking undefined operation/
+        margin-bottom: -(map-get($spacers, 2));
+        overflow: hidden;
+
+        a, input, button, .btn {
+            margin-bottom: map-get($spacers, 2);
+        }
+    }
+}

@@ -1,0 +1,93 @@
+/*=CSS Reset
+========================================================================================*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code, del, dfn, img, ins, kbd, q, s, samp,
+small, strike, sub, sup, tt, var, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, main,
+menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+*,:before,:after{-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}
+:focus { outline:none; }
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section { display: block; }
+html, body { line-height: 1; -webkit-font-smoothing: antialiased; /* Fix for webkit rendering */ -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; }
+ol, ul { list-style: none; }
+img { vertical-align:top; border:0;}
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+/* table { border-collapse: collapse; border-spacing: 0; } */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { a:active{ background-color:transparent;} }
+
+/*** Form Resets ***/
+button,
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="email"],
+input[type="submit"],
+input[type="button"],
+input[type="url"],
+input[type="date"],
+input[type="text"],
+select,
+textarea {
+    font-size: 100%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    vertical-align: baseline;
+    text-overflow: '';
+    line-height: 1;
+    appearance: none;
+    text-decoration: none!important;
+    border-radius: 0; // For Safari
+    background: transparent;
+}
+
+input[type="submit"], button {
+    cursor: pointer;
+}
+
+select {
+    text-overflow: '';
+    text-indent: 0.01px;
+}
+
+input {
+    line-height: normal;
+    transform: translate(0); // Fix issue with IOS cutting borders on Checkboxes and Radio buttons
+}
+
+/*For checkboxes*/
+input::-moz-focus-inner,
+button::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+/* for IE and Edge */
+select::-ms-expand {
+    display: none;
+}
+
+select:disabled::-ms-expand {
+    background: transparent;
+}
+
+
+/* clears the 'X' from Internet Explorer */
+input[type=search]::-ms-clear {  display: none; width : 0; height: 0; }
+input[type=search]::-ms-reveal {  display: none; width : 0; height: 0; }
+
+/* clears the 'X' from Chrome */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }

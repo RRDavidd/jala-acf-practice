@@ -1,0 +1,23 @@
+/* =Divider Block
+========================================================================================*/
+.divider-block {
+
+    & + .block-wrapper:not(.block-p) {
+        margin-top: $block-space;
+        // margin-bottom: -$block-space;
+    }
+
+    .block-wrapper:not(.block-p) + & {
+        margin-top: $block-space;
+    }
+
+
+    hr {
+        margin: 0;
+    }
+
+    @include media-breakpoint-down(xs) {
+
+    }
+}
+

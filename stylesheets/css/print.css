@@ -1,0 +1,119 @@
+/*=======================================================================================*/
+
+/* =Print Styles
+
+============================================================+============================*/
+
+@media print{
+
+
+
+	body {margin:0; padding:0; line-height: 1.2; font: 14px Arial, serif; color: #000!important; background: none;}
+
+	#wrapper { padding:10px; width: 100%; margin: 0; }
+
+
+
+	/* Links */
+
+	a {color: #000!important; }
+
+	a, a:link, a:visited {background: transparent; color: #000!important; text-decoration:none;}
+
+	.site-main a:link[href^="http://"]:after, .site-main a[href^="http://"]:visited:after {content: " (" attr(href) ") "; font-size: 10px; color: #000!important; line-height:1.2; }
+
+	.site-main a[href^="http://"] {color:#000!important; line-height:1.2; font-size:10px; }
+
+	/* Don't show linked images  */
+
+	a[href$=".jpg"]:after, a[href$=".jpeg"]:after, a[href$=".gif"]:after, a[href$=".png"]:after { content: " (" attr(href) ") "; display:none; }
+
+
+
+	/*Image*/
+
+	img, img a {border:none;}
+
+
+
+	/* Headings, HR and P*/
+
+	h1,h2,h3,h4,h5,h6 { page-break-after:avoid; color: #000!important; }
+
+	p, h2, h3 { orphans: 3; widows: 3; color: #000!important; }
+
+	hr { background-color: #ccc; }
+
+
+
+	/* Table */
+
+	table { margin: 1px; text-align:left; }
+
+	th { border-bottom: 1px solid #333;  font-weight: bold; }
+
+	td { border-bottom: 1px solid #333; }
+
+	th,td { padding: 4px 10px 4px 0; }
+
+	tfoot { font-style: italic; }
+
+	caption { background: #fff; margin-bottom:2em; text-align:left; }
+
+	thead {display: table-header-group;}
+
+	img,tr {page-break-inside: avoid;}
+
+
+
+	/*Remove Element*/
+
+	 aside#sidebar, #form-search, .header_right, #nav, #footer {display:none;}
+
+
+
+	/*Header*/
+
+	.logo { width:150px; text-indent:1px; text-decoration:none; margin: 0; padding: 0;}
+
+	.logo img { width:100%; height:auto; }
+
+
+	/*Content*/
+
+	.site-main { width: 100%; margin: 0; padding: 0; background: none; }
+
+	.site-main { width:100%!important; }
+
+	.site-main .wrap { padding:0; margin:0;}
+
+
+
+	/*Footer*/
+
+	#footer {margin-top:10px;}
+
+	a {color: #000!important; }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,180 @@
+/* =Form Styles
+========================================================================================*/
+/*** Form Inputs ***/
+input[type="text"],
+input[type="url"],
+input[type="date"],
+input[type="number"], //Review due to this has arrows for numbers?
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+input[type="search"],
+textarea,
+select {
+	font-family: $font2;
+	color: $color3;
+	background: $input-btn-background;
+	padding: $input-btn-padding-y $input-btn-padding-x;
+	min-height: $input-btn-height;
+	font-size: $input-btn-font-size;
+	border-radius: $border-radius;
+	line-height: $input-btn-line-height;
+	width: 100%;
+	/*Custom*/
+	border: $border-width solid $color-white;
+	margin-bottom: map-get($spacers,1);
+	&:focus {
+		border-color: $color1;
+	}
+}
+
+input[type="file"], input[type="range"] {
+	color: $color1;
+	background: $color-white;
+	border-radius: $border-radius;
+}
+
+input[type="date"],input[type="file"] {
+	width: auto;
+	padding: $input-btn-padding-y;
+	@include media-breakpoint-down(xs) {
+		width: 100%;
+	}
+}
+
+textarea {
+	line-height: $content-line-height;
+	overflow: auto;
+	resize: none;
+	height: map-get($spacers,5);
+	padding: $input-btn-padding-y $input-btn-padding-x;
+}
+
+// Accent colors
+input[type="radio"], input[type="checkbox"], input[type="range"], progress {
+    accent-color: $color1;
+}
+select option:checked, select option:hover{
+    background: $color1;
+    color: $color-white;
+ }
+
+
+/* body select.select_box */
+body select {
+	background: url("../../images/bgi/select-triangle.svg") right 15px center no-repeat $color-white;
+	padding-right: map-get($spacers,2);
+}
+
+select option {
+	padding: 0 rem(4);
+}
+
+
+/*** PlaceHolders ***/
+::-webkit-input-placeholder { /* WebKit browsers */ color: rgba($color3,.5); }
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */ color: rgba($color3,.5); opacity:  1; }
+::-moz-placeholder { /* Mozilla Firefox 19+ */ color: rgba($color3,.5); opacity:  1; }
+:-ms-input-placeholder { /* Internet Explorer 10+ */ color: rgba($color3,.5); }
+
+
+/* CF7 styles */
+form.wpcf7-form, form {
+	overflow:hidden;
+	padding: map-get($spacers,2);
+	background: $color4;
+}
+
+.wpcf7-form .wpcf7-spinner {
+	width: $spacer !important;
+	height: $spacer !important;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: $spacer - rem(10);
+	background-image: url(../../images/bgi/loading.gif) !important;
+	margin: 0;
+	background-color: transparent !important;
+	&::before {
+		content: none;
+	}
+}
+
+html:not(.no-smil) .wpcf7-form .wpcf7-spinner { // SVG Img
+	background-image: url(../../images/bgi/loading.svg) !important;
+	vertical-align: middle;
+	background-color: transparent !important;
+}
+
+
+.wpcf7-form-control-wrap{
+	display: block;
+}
+
+.wpcf7-not-valid {
+	border: $border-width solid $danger!important;
+}
+
+span.wpcf7-not-valid-tip {
+	display: none;
+}
+
+div.wpcf7-response-output {
+	width: 100% !important;
+	padding: $spacer !important;
+	margin: map-get( $spacers, 3 ) 0 map-get( $spacers, 2 ) !important;
+	border-style: solid !important;
+	border-width: $border-width !important;
+	border-radius: $border-radius !important;
+	#sidebar & {
+		padding: 0 !important;
+	}
+
+}
+
+.wpcf7-form {
+	&.sent {
+		.wpcf7-response-output {
+			border-color: $success !important;
+			background-color: transparent !important;
+			color: $success !important;
+		}
+	}
+	&.invalid {
+		.wpcf7-response-output {
+			border-color: $danger !important;
+			background-color: transparent !important;
+			color: $danger !important;
+		}
+	}
+}
+
+.required-field, .required { color: $danger; }
+
+label {
+	display: block;
+	margin-bottom: map-get($spacers,2);
+}
+
+label .wpcf7-form-control-wrap {
+	padding-top: map-get($spacers,1);
+}
+
+.wpcf7-quiz-label {
+	display: inline-block;
+	padding-bottom: map-get($spacers,1);
+}
+
+// work around for input date missing placeholder in mobile
+@include media-breakpoint-down(sm) {
+	input[type="date"]:not(.active):in-range::-webkit-datetime-edit-year-field,
+	input[type="date"]:not(.active):in-range::-webkit-datetime-edit-month-field,
+	input[type="date"]:not(.active):in-range::-webkit-datetime-edit-day-field,
+	input[type="date"]:not(.active):in-range::-webkit-datetime-edit-text {
+		color: transparent;
+	}
+	input[type="date"]:not(.active) {
+		&::before {
+			content: attr(placeholder);
+		}
+	}
+}

@@ -1,0 +1,620 @@
+/* =Default tag styles
+========================================================================================*/
+html {
+    @include fluid-type($root-min-width, $root-max-width, $root-min-font, $root-max-font);
+}
+
+body{
+    position: relative;
+    font-size: rem($font-size-base);
+    font-family: $font1;
+    color: $color3;
+    min-width: 320px;
+    @include media-breakpoint-down(lg) {
+        font-size: $root-max-font;
+    }
+}
+
+.site-main img:not(.unstyled), img.responsive_img {
+    max-width: 100%;
+    height: auto;
+}
+
+a{
+    text-decoration: none;
+    color: $color1;
+    &:hover { color: $color2; }
+}
+
+.link2{
+    text-decoration: none;
+    color: $color2;
+    &:hover { color: $color1; }
+}
+
+
+/* =Font and Colours styles
+========================================================================================*/
+.font1 { font-family: $font1; }
+.font2 { font-family: $font2; }
+
+/* Font Colours */
+.font-color1 {color:$color1;} /*Link*/
+.font-color2 {color:$color2;} /*Link Hover*/
+.font-color3 {color:$color3;} /*Body Font*/
+.font-color4 {color:$color4;} /*Quote bg*/
+
+.font-color-white {
+    color:$color-white;
+}
+
+.font-color-black {
+    color:$color-black;
+}
+
+.font-color-white-strict {
+    @include block-content-tags {
+        color: $color-white;
+    }
+    &.bg-color1 {
+        a:not(.btn):not(.btn2):not(.btn3):not(.button):not(.link2), .link2:hover {
+            color: $color3;
+        }
+        a:not(.btn):not(.btn2):not(.btn3):not(.button):not(.link2):hover, .link2 {
+            color: $color2;
+        }
+    }
+    // &.bg-color2 {
+    //     a:not(.btn):not(.btn2):not(.btn3):not(.button):not(.link2), .link2:hover {
+    //         color: $color3;
+    //     }
+    //     a:not(.btn):not(.btn2):not(.btn3):not(.button):not(.link2):hover, .link2 {
+    //         color: $color1;
+    //     }
+    // }
+    // &.bg-color3 {
+    //     a:not(.btn):not(.btn2):not(.btn3):not(.button):not(.link2), .link2:hover {
+    //         color: $color1;
+    //     }
+    //     a:not(.btn):not(.btn2):not(.btn3):not(.button):not(.link2):hover, .link2 {
+    //         color: $color2;
+    //     }
+    // }
+}
+
+/* Bg Colours */
+.bg-color1, .bg-color1-hover:hover { background-color: $color1 !important; } /*Link*/
+.bg-color2, .bg-color2-hover:hover { background-color: $color2 !important; } /*Link Hover*/
+.bg-color3, .bg-color3-hover:hover { background-color: $color3 !important; } /*Body Font*/
+.bg-color4, .bg-color4-hover:hover { background-color: $color4 !important; } /*Quote bg*/
+.bg-color-white, .bg-color-white-hover:hover {  background-color: $color-white !important; }
+
+.bg-color-alt {
+    background-color: $color4 !important;
+}
+
+.bg-gradient {
+    background: $bg-gradient;
+}
+
+
+/* =Layout styles
+========================================================================================*/
+#wrapper {
+    background: $wrapper-color;
+    position: relative;
+}
+
+.wrap {
+    max-width: $wrap-width;
+    margin: 0 auto;
+}
+
+.wrap-small {
+    max-width: $wrap-width-small;
+    margin: 0 auto;
+}
+
+.wrap-medium {
+    max-width: $wrap-width-medium;
+    margin: 0 auto;
+}
+
+.wrap-large {
+    max-width: $wrap-width-large;
+    margin: 0 auto;
+}
+
+.wrap-p {
+    padding: $wrap-space;
+}
+
+.wrap-px {
+    padding-left: $wrap-space;
+    padding-right: $wrap-space;
+}
+
+.wrap-py {
+    padding-top: $wrap-space;
+    padding-bottom: $wrap-space;
+}
+
+
+/* =Block Classes
+========================================================================================*/
+.block-p {
+    padding-top: $block-space;
+    padding-bottom: $block-space;
+}
+
+.block-pt {
+    padding-top: $block-space;
+}
+
+.block-mb {
+    margin-bottom: $block-space;
+}
+
+.block-mt {
+    margin-top: $block-space;
+}
+
+.block-wrapper {
+
+    &.block-m {
+
+        & + & {
+            margin-top: $block-space;
+        }
+
+        // &:nth-child(1){ // No needed when using Bredcrumbs
+        //     margin-top: $block-space;
+        // }
+
+        &:last-child {
+            margin-bottom: $block-space;
+        }
+
+        // Special cases
+        // &.gallery-block + & {
+        //     margin-top: 0;
+        // }
+    }
+
+    &.block-p {
+        & + &, &:nth-child(1) {
+            margin-top: 0;
+        }
+        &.bg-color1 {
+            & + & {
+                padding-top: 0;
+            }
+        }
+        &.bg-color2 {
+            & + & {
+                padding-top: 0;
+            }
+        }
+        &.bg-color3 {
+            & + & {
+                padding-top: 0;
+            }
+        }
+        &.bg-color4 {
+            & + & {
+                padding-top: 0;
+            }
+        }
+        &.bg-color-alt {
+            & + & {
+                padding-top: 0;
+            }
+        }
+        // For all the possible combinations
+        // &.bg-color1, &.bg-color2, &.bg-color3, &.bg-color-alt {
+        //     & + & {
+        //         padding-top: 0;
+        //     }
+        // }
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+
+
+/* =Editor Classes
+========================================================================================*/
+.alignnone {
+    margin: map-get( $spacers , 1 ) map-get( $spacers , 2 ) map-get( $spacers , 2 ) 0;
+}
+
+.aligncenter, div.aligncenter {
+    display: block;
+    margin: map-get( $spacers , 1 ) auto map-get( $spacers , 1 ) auto;
+}
+
+.alignright {
+    float: right;
+    margin: map-get( $spacers , 1 ) 0 map-get( $spacers , 2 ) map-get( $spacers , 2 );
+}
+
+.alignleft {
+    float: left;
+    margin: map-get( $spacers , 1 ) map-get( $spacers , 2 ) map-get( $spacers , 2 ) 0;
+}
+
+a img {
+    &.alignright {
+        float: right;
+        margin: map-get( $spacers , 1 ) 0 map-get( $spacers , 2 ) map-get( $spacers , 2 );
+    }
+    &.alignnone {
+        margin: map-get( $spacers , 1 ) map-get( $spacers , 2 ) map-get( $spacers , 2 ) 0;
+    }
+    &.alignleft {
+        float: left;
+        margin: map-get( $spacers , 1 ) map-get( $spacers , 2 ) map-get( $spacers , 2 ) 0;
+    }
+    &.aligncenter {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+img.aligncemter, img.alignright, img.alignleft {
+    @include media-breakpoint-down(xs) {
+        margin: map-get( $spacers , 1 ) 0 !important;
+        width: 100%;
+        height: auto;
+    }
+}
+
+.wp-caption {
+    /* Image does not overflow the content area */
+    // padding: 5px 3px 10px;
+    text-align: center;
+    margin-bottom: map-get( $spacers , 1 );
+    max-width: 100%;
+    &.alignnone, &.alignleft {
+        margin: map-get( $spacers , 1 ) map-get( $spacers , 2 ) map-get( $spacers , 2 ) 0;
+    }
+    &.alignright {
+        margin: map-get( $spacers , 1 ) 0 map-get( $spacers , 2 ) map-get( $spacers , 2 );
+    }
+    img {
+        border: 0 none;
+        height: auto;
+        margin: 0;
+        // max-width: 98.5%;
+        padding: 0;
+        //width: auto;
+        width: 100%;
+
+    }
+    .wp-caption-text {
+        background:$color4;
+        padding: map-get( $spacers , 1 );
+        font-style: italic;
+        text-align: center;
+    }
+    @include media-breakpoint-down(xs) {
+        width: 100% !important;
+    }
+    // p.wp-caption-text {
+    //     font-size: 11px;
+    //     line-height: 17px;
+    //     margin: 0;
+    //     padding: 0 4px 5px;
+    // }
+}
+
+.wp-caption.alignnone {
+    width: 100% !important;
+    background: $color4;
+    text-align: center;
+    padding: map-get( $spacers, 3 );
+    margin: map-get( $spacers, 4 ) 0;
+}
+
+.entry {
+    .iframe-responsive {
+        margin-bottom: $content-space;
+        &:last-child{
+            margin-bottom: 0;
+        }
+    }
+}
+
+
+/* =Screen readers styles
+========================================================================================*/
+.screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    width: 1px;
+    word-wrap: normal !important;
+    /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+    &:focus {
+        background-color: $color-white;
+        clip: auto !important;
+        clip-path: none;
+        color: $color-black;
+        display: block;
+        font-size: 1em;
+        height: auto;
+        left: 5px;
+        line-height: normal;
+        padding: 15px 23px 14px;
+        text-decoration: none;
+        top: 5px;
+        width: auto;
+        z-index: 100000;
+        /* Above WP toolbar. */
+    }
+}
+
+
+/*** Selection ***/
+::selection {
+    background:$color1;
+    color:$color4;
+}
+
+
+
+/* =General Classes
+========================================================================================*/
+.cf {
+    @extend %clearfix;
+}
+
+.v-center {
+    @extend %v-center;
+}
+
+.v-center-left {
+    @extend %v-center-left;
+
+}
+.v-center-right {
+    @extend %v-center-right;
+}
+
+.vh-center {
+    @extend %vh-center;
+}
+
+.v-center-lg {
+    @extend %v-center-lg;
+}
+
+.v-center-right-lg {
+    @extend %v-center-right-lg;
+}
+
+.vh-center-lg {
+    @extend %vh-center-lg;
+}
+
+.center-v {
+    @extend %center-v;
+}
+
+.center-v-right {
+    @extend %center-v-right;
+}
+
+.center-vh {
+    @extend %center-vh;
+}
+
+.center-v-wrapper {
+    @extend %center-v-wrapper;
+}
+
+.center-vh-wrapper {
+    @extend %center-vh-wrapper;
+}
+
+.center-v-wrapper-right {
+    @extend %center-v-wrapper-right;
+}
+
+.grow {
+    @extend %grow;
+}
+
+.growed {
+    @extend %growed;
+}
+
+.left {
+    @extend %left;
+}
+
+.right {
+    @extend %right;
+}
+
+.center {
+    @extend %center;
+}
+
+.norightmargin {
+    @extend %norightmargin;
+}
+
+.align-center {
+    @extend %align-center;
+}
+
+.align-left {
+    @extend %align-left;
+}
+
+.align-right {
+    @extend %align-right;
+}
+
+.align-center-sm {
+    @extend %align-center-sm;
+}
+
+.align-left-sm {
+    @extend %align-left-sm;
+}
+
+.align-right-sm {
+    @extend %align-right-sm;
+}
+
+.align-center-md {
+    @extend %align-center-md;
+}
+
+.align-left-md {
+    @extend %align-left-md;
+}
+
+.align-right-md {
+    @extend %align-right-md;
+}
+
+.align-center-lg {
+    @extend %align-center-lg;
+}
+
+.align-left-lg {
+    @extend %align-left-lg;
+}
+
+.align-right-lg {
+    @extend %align-right-lg;
+}
+
+.pos-relative {
+    @extend %pos-relative;
+}
+
+.hide{
+    @extend %hide;
+}
+
+.img-cover-wrapper{
+    @extend %img-cover-wrapper;
+}
+
+.square-box{
+    @extend %square-box;
+}
+
+.nowrap  {
+    @extend %nowrap;
+}
+
+.iframe-responsive {
+    @extend %iframe-responsive;
+}
+
+/*Trasitions with Fix of opacity movement. */
+.transition-all, .transition-all-children *,
+.transition-all-slower, .transition-all-children-slower *,
+.transition-all-quicker, .transition-all-children-quicker *
+{
+    @extend %transition-all;
+}
+
+.transition-all-slower, .transition-all-children-slower * {
+    @extend %transition-all-slower;
+}
+
+.transition-all-quicker, .transition-all-children-quicker * {
+    @extend %transition-all-quicker;
+}
+
+.transition-colors {
+    @extend %transition-colors;
+}
+
+a, button, input, textarea, h1, h2, h3, h4, h5, h6 {
+    @extend %transition-colors;
+}
+
+.no_transition {
+    transition: none;
+}
+
+.shadow {
+    @extend %shadow;
+}
+
+.shadow-large {
+    @extend %shadow-large;
+}
+
+.rounded {
+    @extend %rounded;
+}
+
+.rounded-small {
+    @extend %rounded-small;
+}
+
+.circled {
+    @extend %circled;
+}
+
+.invisible, .invisible *  {
+    @extend %invisible;
+}
+
+.visible  {
+    @extend %visible;
+}
+
+.img-only-link {
+    @extend %img-only-link;
+}
+
+.flip {
+    @extend %flip;
+}
+
+.vertical_align_wrapper {
+    display: table;
+    height: 100%;
+    width: 100%;
+    table-layout: fixed;
+    .vertical_align_content {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    // height: 100%;
+    height: 100vh;  // To Fix Firefox issue not getting the scrollbar.
+    }
+}
+
+
+// For accessibility
+:focus-visible {
+    outline: $border-width solid rgba( $color4, 0.3) !important;
+}
+
+input:focus-visible {
+    outline: $border-width solid rgba( $color4, 0.3) !important;
+    background-color: $color4 !important;
+}
+
+
+/* =JD Media Query
+========================================================================================*/
+.jd_media_query_activation { height:0; width:0; position:absolute; overflow:hidden; visibility:hidden; }

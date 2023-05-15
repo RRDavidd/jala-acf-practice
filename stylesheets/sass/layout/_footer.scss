@@ -1,0 +1,28 @@
+/* =Footer
+========================================================================================*/
+#footer {
+    line-height: $content-line-height;
+
+    .footer-links {
+        @include media-breakpoint-down(sm) {
+            a {
+                display: inline-block;
+                margin-bottom: map-get( $spacers, 2 );
+                &:last-child {
+                    margin-bottom: 0 !important;
+                }
+            }
+        }
+    }
+
+    @include media-breakpoint-down(sm) {
+        .col {
+            margin-bottom: map-get($spacers,2);
+            text-align: center;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

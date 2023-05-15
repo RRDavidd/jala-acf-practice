@@ -1,0 +1,15 @@
+/*
+Theme Name: WhitePearl NG
+Theme URI: https://www.whitepearl.com.au
+Description: Theme for Client Name, integrated with WordPress by Jala Design.
+Author: Jala Design
+Author URI: https://www.jaladesign.com.au
+Version: 1.2.0
+Text Domain: text_domain
+
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+/* Required CSS Classes */
+.wp-caption, .wp-caption-text, .sticky, .screen-reader-text, .gallery-caption, .bypostauthor , .alignright, .alignleft, .aligncenter {}

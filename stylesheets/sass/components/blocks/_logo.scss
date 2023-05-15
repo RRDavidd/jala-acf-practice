@@ -1,0 +1,17 @@
+/* = Highlight
+========================================================================================*/
+.logo-block {
+    .logo-item {
+        figure {
+            img {
+                aspect-ratio: 1/1;
+                object-fit: contain;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .content-container {
+            text-align: center;
+        }
+    }
+}

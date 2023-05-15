@@ -1,0 +1,48 @@
+.jala-whitepearl-error {
+    margin: 2.5rem;
+    border: 1px solid red;
+    background-color: white;
+    color: black;
+    padding: 2.5rem;
+    font-family: monospace;
+    overflow-wrap: break-word;
+    font-size: 16px;
+    line-height: 22px;
+    z-index: 9999;
+    .jala-whitepearl-error-title {
+        color: red;
+        font-weight: bold;
+        span {
+            font-weight: normal;
+            font-style: italic;
+        }
+    }
+}
+
+.jala-whitepearl-debug {
+    margin: 2.5rem;
+    border: 1px solid black;
+    background-color: white;
+    padding: 2.5rem;
+    font-family: monospace;
+    overflow-wrap: break-word;
+    z-index: 9999;
+    &.jala-whitepearl-debug-public {
+        display: none;
+    }
+    pre {
+        white-space: pre-wrap;
+        font-size: 16px;
+        color: black;
+        line-height: 22px;
+        position: relative;
+        background-image: linear-gradient(0deg, #F2F2F2 25%, #FFFFFF 25%, #FFFFFF 50%, #F2F2F2 50%, #F2F2F2 75%, #FFFFFF 75%, #FFFFFF 100%);
+        background-size: 1px 88px;
+    }
+    & > p {
+        font-weight: bold;
+        margin-bottom: 1rem;
+        font-size: 16px;
+        color: black;
+    }
+}

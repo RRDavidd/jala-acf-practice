@@ -1,0 +1,50 @@
+/* =Accordion
+========================================================================================*/
+.accordion-data {
+    display: none;
+    background:$color4;
+}
+.accordion-row {
+    margin-bottom: map-get($spacers,2);
+    background: $color-white;
+    & .accordion-data {
+        padding: map-get($spacers,2);
+        .accordion-block.block-p & {
+            background-color: $color-white;
+        }
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+.accordion-trigger, .tab-container .tabMobiletrigger {
+    padding: map-get($spacers,2);
+    background: $color1;
+    cursor: pointer;
+    position: relative;
+    color: $color-white;
+    padding-left: rem(70);
+	margin: 0;
+    @extend %transition-all-slower;
+    &:before, &:after {
+        content: "";
+        background: $color2;
+        height: $custom-element-height;
+        border-radius: $border-radius-small;
+        width: rem(28);
+        position: absolute;
+        left: rem(20);
+        top: rem(30);
+        @extend %transition-all;
+    }
+    &:after {
+        transform: rotate(90deg);
+    }
+    .accordion-row.open & {
+		// background:$color2;
+        &:after {
+            transform: rotate(180deg);
+            // background: $color1;
+        }
+    }
+}

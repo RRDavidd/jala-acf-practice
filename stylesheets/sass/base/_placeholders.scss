@@ -1,0 +1,462 @@
+/* =Base Placeholders
+========================================================================================*/
+
+%clearfix, %cf {
+    zoom:1;
+    &::before, &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+%transition-all {
+    transition: all #{$transition-base}s ease-in-out; backface-visibility: hidden;
+}
+
+%transition-all-children * {
+    transition: all #{$transition-base}s ease-in-out; backface-visibility: hidden;
+}
+
+%transition-all-slower {
+    transition: all #{$transition-base-slower}s ease-in-out; backface-visibility: hidden;
+}
+
+%transition-all-quicker {
+    transition: all #{$transition-base-quicker}s ease-in-out; backface-visibility: hidden;
+}
+
+%transition-colors {
+    transition: color #{$transition-base}s ease-in-out, background-color #{$transition-base}s ease-in-out, border-color #{$transition-base}s ease-in-out; backface-visibility: hidden;
+}
+
+%transition-colors-children * {
+    transition: color #{$transition-base}s ease-in-out, background-color #{$transition-base}s ease-in-out, border-color #{$transition-base}s ease-in-out; backface-visibility: hidden;
+}
+
+%transition-colors-slower {
+    transition: color #{$transition-base-slower}s ease-in-out, background-color #{$transition-base-slower}s ease-in-out, border-color #{$transition-base-slower}s ease-in-out; backface-visibility: hidden;
+}
+
+%transition-colors-quicker {
+    transition: color #{$transition-base-quicker}s ease-in-out, background-color #{$transition-base-quicker}s ease-in-out, border-color #{$transition-base-quicker}s ease-in-out; backface-visibility: hidden;
+}
+
+%v-center{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+%v-center-left {
+    @extend %v-center;
+    left: 0;
+    right: auto;
+}
+
+%v-center-right {
+    @extend %v-center;
+    right: 0;
+    left: auto;
+}
+
+%h-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+%vh-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+%center-vh, %center-v, %center-v-right {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    > * {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        min-height: 100%;
+        align-items: center; // Overwrite this "align-items: inherit" to make elements full width.
+    }
+}
+
+%center-v {
+    > * {
+        align-items: flex-start; // Remove this line to make elements full width.
+    }
+}
+
+%center-v-right {
+    > * {
+        align-items: flex-end; // Remove this line to make elements full width.
+    }
+}
+
+%center-vh-wrapper, %center-v-wrapper, %center-v-wrapper-right {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    > .center-wrapper-content {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        min-height: 100%;
+        align-items: flex-start; // Overwrite this "align-items: inherit" to make elements full width.
+    }
+}
+
+%center-v-wrapper-right {
+    > .center-wrapper-content {
+        align-items: flex-end; // Remove this line to make elements full width.
+    }
+}
+
+%center-vh-wrapper {
+    > .center-wrapper-content {
+        align-items: center; // Remove this line to make elements full width.
+    }
+}
+
+%hide-text {
+    font-size: 0;
+    text-indent: -999em;
+    overflow: hidden;
+}
+
+%shadow {
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.1);
+}
+
+%shadow-large {
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.4);
+}
+
+%shadow-bottom {
+    //box-shadow: 0 4px 2px -2px rgba(0,0,0,0.5);
+    box-shadow: 0 6px 10px -4px rgba(0,0,0,0.4);
+}
+
+%grow {
+    overflow: hidden;
+    img {
+        @extend %transition-all;
+    }
+    &:hover img {
+        transform: scale(1.02);
+    }
+}
+
+%growed {
+    overflow: hidden;
+    img {
+        @extend %transition-all;
+        transform: scale(1.02);
+    }
+}
+
+%border-line {
+    content: "\2588"; //Big block element to cover layout
+    line-height: 1;
+    font-size: 100px;
+    display: block;
+    height: $custom_element-height;
+    width: 60px;
+    overflow: hidden;
+    border-radius: $border-radius;
+}
+
+%left {
+    float: left;
+}
+
+%right {
+    float: right;
+}
+
+%center {
+    //display: block;
+    margin: 0 auto;
+}
+
+%norightmargin {
+    margin-right: 0 !important;
+}
+
+%align-center {
+    text-align: center;
+}
+
+%align-left {
+    text-align: left;
+}
+
+%align-right {
+    text-align: right;
+}
+
+%pos-relative {
+    position: relative;
+}
+
+%hide {
+    display: none;
+}
+
+%nowrap {
+    white-space: nowrap;
+}
+
+%iframe-responsive {
+    position: relative;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+    max-width: 100%;
+    height: auto;
+    iframe,object,embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+%rounded {
+    border-radius: $border-radius;
+    overflow: hidden;
+}
+
+%rounded-small {
+    border-radius: $border-radius-small;
+    overflow: hidden;
+}
+
+%circled {
+    border-radius: 1000%;
+    overflow:hidden;
+    // width:100%;
+    // height:0;
+    // padding-bottom:100%;
+    img {
+        width: 100%;
+    }
+}
+
+%invisible {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s linear #{$transition-base}s, opacity #{$transition-base}s;
+    cursor: default;
+    }
+
+%visible {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s linear 0s, opacity #{$transition-base}s;
+}
+
+%grayscale {
+    filter: grayscale(100%);
+}
+
+%img-cover-wrapper {
+    & img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover;
+    }
+}
+
+%square-box {
+    position: relative;
+    overflow: hidden;
+
+    &:before {
+        content: "";
+        display: block;
+        padding-top: 100%;
+    }
+    .square-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+
+        >div {
+            display: table;
+            width: 100%;
+            height: 100%;
+
+            >div {
+                display: table-cell;
+                text-align: center;
+                vertical-align: middle;
+            }
+        }
+    }
+}
+
+%img-only-link {
+    display: inline-block;
+    text-align: center;
+    @extend %transition-all;
+    @extend %transition-all-children;
+
+    span {
+        font-size: 0;
+        height: 0;
+        left: -999em;
+        line-height: 0;
+        overflow: hidden;
+        position: absolute;
+        text-indent: -999em;
+        top: -999em;
+        width: 0;
+    }
+}
+
+%flip {
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+
+/* Responsive Placeholders
+========================================================================================*/
+@include media-breakpoint-up(sm) {
+
+    %align-left-sm {
+        text-align: left;
+    }
+
+    %align-right-sm {
+        text-align: right;
+    }
+
+    %align-center-sm {
+        text-align: center;
+    }
+
+    %v-center-sm{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    %v-center-right-sm{
+        @extend %v-center-sm;
+        right: 0;
+        left: auto;
+    }
+
+    %h-center-sm{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    %vh-center-sm{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@include media-breakpoint-up(md) {
+
+    %align-left-md {
+        text-align: left;
+    }
+
+    %align-right-md {
+        text-align: right;
+    }
+
+    %align-center-md {
+        text-align: center;
+    }
+
+    %v-center-md{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    %v-center-right-md{
+        @extend %v-center-md;
+        right: 0;
+        left: auto;
+    }
+
+    %h-center-md{
+        position: absolute;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+    }
+
+    %vh-center-md{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+}
+
+@include media-breakpoint-up(lg) {
+
+    %align-left-lg {
+        text-align: left;
+    }
+
+    %align-right-lg {
+        text-align: right;
+    }
+
+    %align-center-lg {
+        text-align: center;
+    }
+
+    %v-center-lg{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    %v-center-right-lg{
+        @extend %v-center-lg;
+        right: 0;
+        left: auto;
+    }
+
+    %h-center-lg{
+        position: absolute;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+    }
+
+    %vh-center-lg{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+}
+
+
+/*** Custom Placeholders ***/

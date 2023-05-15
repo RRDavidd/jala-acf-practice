@@ -1,0 +1,82 @@
+// Covert to ems
+@function em($pixels, $font-size: $root-max-font){
+	$font-size: #{$pixels/$font-size}em;
+	@return $font-size;
+}
+
+// Covert to rems
+// @function rem($pixels, $font-size: $root-max-font){
+// 	$font-size: #{$pixels/$font-size}rem;
+// 	@return $font-size;
+// }
+@function rem($pixels, $context:  $root-max-font) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+  @return $pixels / $context * 1rem;
+}
+
+
+// Convert pixels to vw - new
+@function get-vw($target, $rel-size: 1903){
+	$rel-size: strip-unit($rel-size);
+	$vw-context: ($rel-size *.01) * 1px; // The max width of my window is what's relative for me
+	@return ($target/$vw-context) * 1vw;
+}
+
+// Reduce size by fraction
+// $number: original number to fractionalize
+// $parts: how many parts to divide it into e.g 4 = quaters, 3 = thirds
+// $negCount: the number of times to minus from original number
+@function reduceByFraction($number, $parts, $negCount: 1){
+	$finalNumber: $number - (($number/$parts) * $negCount);
+	@return $finalNumber;
+}
+
+// Remove the unit of a length
+// @param {Number} $number - Number to remove unit from
+// @return {Number} - Unitless number
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number){
+	@return $number / ($number * 0 + 1);
+  }
+  @return $number;
+}
+
+// Converts string to number
+// @param {string} $value - String to covert to number
+// @return {number}
+@function number($value) {
+  @if type-of($value) == 'number' {
+    @return $value;
+  } @else if type-of($value) != 'string' {
+    $_: log('Value for `to-number` should be a number or a string.');
+  }
+
+  $result: 0;
+  $digits: 0;
+  $minus: str-slice($value, 1, 1) == '-';
+  $numbers: ('0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9);
+
+  @for $i from if($minus, 2, 1) through str-length($value) {
+    $character: str-slice($value, $i, $i);
+
+    @if not (index(map-keys($numbers), $character) or $character == '.') {
+      @return to-length(if($minus, -$result, $result), str-slice($value, $i))
+    }
+
+    @if $character == '.' {
+      $digits: 1;
+    } @else if $digits == 0 {
+      $result: $result * 10 + map-get($numbers, $character);
+    } @else {
+      $digits: $digits * 10;
+      $result: $result + map-get($numbers, $character) / $digits;
+    }
+  }
+
+  @return if($minus, -$result, $result);
+}

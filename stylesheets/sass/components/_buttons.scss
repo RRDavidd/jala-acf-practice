@@ -1,0 +1,189 @@
+/* =Buttons
+========================================================================================*/
+.btn, .btn2, .btn3, .button, input[type="button"], input[type="submit"], button:not([class^="gm-"]):not(.unstyled):not(.page-numbers) {
+    margin: 0;
+    display: inline-block;
+    text-align: center;
+    min-height: $input-btn-height;
+    min-width: rem(10);
+    border: $border-width solid $color1;
+    cursor: pointer;
+    font-size: $input-btn-font-size;
+    //font-weight: $font-weight-bold;
+    // text-transform: uppercase;
+    padding: $input-btn-padding-y $input-btn-padding-x;
+    text-decoration: none!important;
+    border-radius: $border-radius;
+    font-family: $font2;
+    line-height: $input-btn-line-height;
+}
+.btn, .button, input[type="button"], input[type="submit"], button:not([class^="gm-"]):not(.unstyled):not(.page-numbers) {
+    background: $color1;
+    color: $color-white;
+    &:hover {
+        background: transparent !important;
+        color: $color1;
+    }
+}
+
+.btn-small {
+    min-height: $input-btn-height/1.5;
+    font-size: $input-btn-font-size/1.5;
+    padding: $input-btn-padding-y/1.5 $input-btn-padding-x/1.5;
+    border-radius: $border-radius/1.5;
+
+}
+.btn-large {
+    min-height: $input-btn-height*1.5;
+    font-size: $input-btn-font-size*1.5;
+    padding: $input-btn-padding-y*1.5 $input-btn-padding-x*1.5;
+    border-radius: $border-radius*1.5;
+}
+
+.btn2 {
+    background: $color2;
+    border-color: $color2;
+    color: $color-white;
+    &:hover {
+        background: transparent !important;
+        color: $color2;
+    }
+}
+
+.btn3 {
+    background: $color-white;
+    border-color: $color-white;
+    color: $color1;
+    &:hover {
+        background: transparent !important;
+        color: $color-white;
+    }
+}
+
+/* Custom Buttons*/
+/*****************************/
+// .btn-login {
+//     background: url(../../images/lock.svg) no-repeat left rem(38) center $color-white;
+//     &:hover {
+//     }
+// }
+
+
+/*Responsive Menu*/
+/****************************/
+.responsive-menu-btn, .close_overlay {
+    border: none !important ;
+    width: $custom-menu-height;
+    height:$custom-menu-height;
+    text-indent: -999em;
+    overflow: hidden;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    background: transparent !important;
+    padding: 0 !important;
+    span {
+        position: absolute;
+        &:before, &:after {
+            content: "";
+            position: absolute;
+        }
+        &:before, &:after, & {
+            display: block;
+            width: $custom-menu-button-element-width;
+            height: $custom-element-height;
+            background-color: $color1;
+            border-radius: $border-radius-small;
+            //@extend %transition-all; // It will cause conflict with next "Responsive Menu Icon effect"
+        }
+        &:before {
+            top: -12px;
+        }
+        &:after {
+            bottom: -12px;
+        }
+    }
+    &:hover span {
+        &:before, &:after, & {
+            background-color: $color-white;
+        }
+    }
+}
+
+.search-btn {
+    border: none !important;
+    width: $custom-menu-height;
+    height: $custom-menu-height;
+    text-indent: -999em;
+    overflow: hidden;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    background: transparent !important;
+    padding: 0 !important;
+    span {
+        position: absolute;
+        display: inline-block;
+        border-radius: 50%;
+        width: $custom-menu-button-element-width - 8px;
+        height: $custom-menu-button-element-width - 8px;
+        border: $custom-element-height solid $color1;
+
+        &:after {
+            content: "";
+            position: absolute;
+            top: ( $custom-menu-button-element-width / 2 ) - 0px;
+            left: ( $custom-menu-button-element-width / 2 ) - 2px;
+            width: $custom-menu-button-element-width / 3;
+            height: $custom-element-height;
+            background: $color1;
+            border-radius: $border-radius-small;
+            transform: rotate(45deg);
+        }
+    }
+    &:hover {
+        span{
+            border-color: $color-white;
+        }
+        span:after {
+            background-color: $color-white;
+        }
+    }
+}
+
+
+
+/* Responsive Menu Icon effect */
+// Added "body" to separate code and avoid Lint validation errors.
+body .responsive-menu-btn, body .close_overlay {
+    span {
+        transition-timing-function: cubic-bezier(.55,.055,.675,.19);
+        transition-duration: 75ms;
+        &:before {
+            transition: all 75ms ease-in-out, top 75ms ease .12s,opacity 75ms ease;
+        }
+        &:after {
+            transition: all 75ms ease-in-out, bottom 75ms ease .12s,transform 75ms cubic-bezier(.55,.055,.675,.19);
+        }
+    }
+    &.open {
+        span {
+            background: $color-white;
+            transition-delay: .12s;
+            transition-timing-function: cubic-bezier(.215,.61,.355,1);
+            transform: translate(-50%, -50%) rotate(45deg);
+            &:before {
+                background: $color-white;
+                top: 0;
+                transition: all 75ms ease-in-out, top 75ms ease,opacity 75ms ease .12s;
+                opacity: 0;
+            }
+            &:after {
+                background: $color-white;
+                bottom: 0;
+                transition: all 75ms ease-in-out, bottom 75ms ease,transform 75ms cubic-bezier(.215,.61,.355,1) .12s;
+                transform: rotate(-90deg);
+            }
+        }
+    }
+}
